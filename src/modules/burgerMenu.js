@@ -4,7 +4,6 @@ const burgerMenu = () => {
     popup = document.querySelector(".popup-menu"),
     top = topMenu.getBoundingClientRect().top;
 
-
   window.addEventListener('scroll', () => {
     const width = document.documentElement.clientWidth;
     const height = pageYOffset;
