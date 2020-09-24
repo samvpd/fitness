@@ -9,7 +9,7 @@ const textModal = () => {
         popup.style.display = "block";
       }
     });
-    popup.addEventListener("click", () => {
+    popup.addEventListener("click", event => {
       let target = event.target;
       if (target.classList.contains("close-icon")) {
         popup.style.display = "none";
