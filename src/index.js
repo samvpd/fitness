@@ -5,6 +5,8 @@ elementClosest(window);
 
 import dropMenu from "./modules/dropMenu";
 import textModal from "./modules/textModal";
+import btnModal from "./modules/btnModal";
 
 dropMenu();
 textModal();
+btnModal();
