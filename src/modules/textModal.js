@@ -4,7 +4,7 @@ const textModal = () => {
 
   headerMain.addEventListener("click", event => {
     const target = event.target;
-    if (target.closest(".free-visit")) {
+    if (target.closest(".open-popup")) {
       popup.style.display = "block";
     }
   });
