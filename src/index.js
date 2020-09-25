@@ -8,9 +8,11 @@ import textModal from "./modules/textModal";
 import btnModal from "./modules/btnModal";
 import giftModal from "./modules/giftModal";
 import burgerMenu from "./modules/burgerMenu";
+import arrowToTop from "./modules/arrowToTop";
 
 dropMenu();
 textModal();
 btnModal();
 burgerMenu();
 giftModal();
+arrowToTop();

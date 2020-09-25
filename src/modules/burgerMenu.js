@@ -1,6 +1,5 @@
 const burgerMenu = () => {
-  const menuButton = document.querySelector(".menu-button"),
-    topMenu = document.querySelector(".top-menu"),
+  const topMenu = document.querySelector(".top-menu"),
     wrapper = topMenu.querySelector(".wrapper"),
     popup = document.querySelector(".popup-menu"),
     top = topMenu.getBoundingClientRect().top;
