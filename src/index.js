@@ -10,7 +10,8 @@ import giftModal from "./modules/giftModal";
 import burgerMenu from "./modules/burgerMenu";
 import arrowToTop from "./modules/arrowToTop";
 import mainSlider from "./modules/mainSlider";
-
+import gallerySlider from "./modules/gallerySlider";
+import sendForm from "./modules/sendForm";
 
 dropMenu();
 textModal();
@@ -19,3 +20,5 @@ burgerMenu();
 giftModal();
 arrowToTop();
 mainSlider();
+gallerySlider();
+sendForm();
