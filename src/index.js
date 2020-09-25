@@ -9,6 +9,8 @@ import btnModal from "./modules/btnModal";
 import giftModal from "./modules/giftModal";
 import burgerMenu from "./modules/burgerMenu";
 import arrowToTop from "./modules/arrowToTop";
+import mainSlider from "./modules/mainSlider";
+
 
 dropMenu();
 textModal();
@@ -16,3 +18,4 @@ btnModal();
 burgerMenu();
 giftModal();
 arrowToTop();
+mainSlider();
