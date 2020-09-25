@@ -1,6 +1,7 @@
 const burgerMenu = () => {
   const menuButton = document.querySelector(".menu-button"),
     topMenu = document.querySelector(".top-menu"),
+    wrapper = topMenu.querySelector(".wrapper"),
     popup = document.querySelector(".popup-menu"),
     top = topMenu.getBoundingClientRect().top;
 
@@ -13,7 +14,7 @@ const burgerMenu = () => {
       topMenu.style.position = "";
     }
   });
-  menuButton.addEventListener("click", event => {
+  wrapper.addEventListener("click", event => {
     const target = event.target;
     if (target.closest("img")) {
       popup.style.display = "flex";

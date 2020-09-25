@@ -12,5 +12,5 @@ import burgerMenu from "./modules/burgerMenu";
 dropMenu();
 textModal();
 btnModal();
-giftModal();
 burgerMenu();
+giftModal();
