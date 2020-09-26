@@ -878,8 +878,8 @@ body {
 .wrapper {
   max-width: 1170px;
   margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px
+  padding-left: 8px;
+  padding-right: 8px
 }
 
 .btn {

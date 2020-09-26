@@ -43,7 +43,7 @@ const gallerySlider = () => {
     dotsUl.append(dotsLi);
     dotsDiv.append(dotsUl);
   });
-  console.log(dotsDiv);
+
   gallerySlider.append(dotsDiv);
   const dot = document.querySelectorAll('.gallery-slider .slider-dots li button');
   dot[0].classList.add('slick-active');

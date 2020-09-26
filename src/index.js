@@ -12,6 +12,7 @@ import arrowToTop from "./modules/arrowToTop";
 import mainSlider from "./modules/mainSlider";
 import gallerySlider from "./modules/gallerySlider";
 import sendForm from "./modules/sendForm";
+import servicesSlider from './modules/servicesSlider';
 
 dropMenu();
 textModal();
@@ -22,3 +23,4 @@ arrowToTop();
 mainSlider();
 gallerySlider();
 sendForm();
+servicesSlider();
