@@ -15,6 +15,9 @@ const sendForm = () => {
     clubs = document.querySelector('.choose-club'),
     mozLabel = clubs.querySelector(`label[for="${footerLetoMozaika.id}"]`),
     shelkLabel = clubs.querySelector(`label[for="${footerLetoSchelkovo.id}"]`);
+  const inputRadio = document.querySelectorAll("input[type=radio]");
+
+
 
   statusMessage.style.cssText = `font-size: 1.5rem; color: red;`;
   const validatorInputs = () => {
@@ -49,13 +52,42 @@ const sendForm = () => {
 
     mozClub.addEventListener('change', () => {
       mozClub.setAttribute('checked', '');
-      mozClub.setAttribute('value', `${JSON.stringify(mozData)}`);
+      if (footerLetoMozaika && !footerLetoMozaika.checked) {
+        p.textContent = checkMessage;
+        h4.textContent = "Oops!";
+        popUpMessage.style.display = "block";
+        setTimeout(() => {
+          statusMessage.textContent = '';
+          popUpMessage.style.display = "none";
+        }, 5000);
+        return;
+      } else {
+        mozClub.setAttribute('value', `${JSON.stringify(mozData)}`);
+      }
+      // p.textContent = "Ваша заявка отправлена.Мы свяжемся с вами в ближайшее время.";
+      // h4.textContent = "Спасибо!";
+      // popUpMessage.style.display = "block";
+
       schelClub.removeAttribute('checked');
     });
 
     schelClub.addEventListener('change', () => {
       schelClub.setAttribute('checked', '');
-      schelClub.setAttribute('value', `${JSON.stringify(schelData)}`);
+      if (footerLetoSchelkovo && !footerLetoSchelkovo.checked) {
+        p.textContent = checkMessage;
+        h4.textContent = "Oops!";
+        popUpMessage.style.display = "block";
+        setTimeout(() => {
+          statusMessage.textContent = '';
+          popUpMessage.style.display = "none";
+        }, 5000);
+        return;
+      } else {
+        schelClub.setAttribute('value', `${JSON.stringify(schelData)}`);
+      }
+      // p.textContent = "Ваша заявка отправлена.Мы свяжемся с вами в ближайшее время.";
+      // h4.textContent = "Спасибо!";
+      // popUpMessage.style.display = "block";
       mozClub.removeAttribute('checked');
     });
   };
@@ -85,22 +117,7 @@ const sendForm = () => {
         body[key] = val;
       });
 
-      if ((inputText && inputText.value === '') || inputTel.value === '') {
-        p.textContent = checkMessage;
-        h4.textContent = "Oops!";
-        popUpMessage.style.display = "block";
-        setTimeout(() => {
-          statusMessage.textContent = '';
-          popUpMessage.style.display = "none";
-        }, 5000);
-        return;
-      } else {
-        p.textContent = "Ваша заявка отправлена.Мы свяжемся с вами в ближайшее время.";
-        h4.textContent = "Спасибо!";
-        popUpMessage.style.display = "block";
-      }
-
-      if (checkBox && !checkBox.checked) {
+      if ((checkBox && !checkBox.checked) || ((inputText && inputText.value === '') || inputTel.value === '')) {
         p.textContent = checkMessage;
         h4.textContent = "Oops!";
         popUpMessage.style.display = "block";
