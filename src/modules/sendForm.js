@@ -14,13 +14,11 @@ const sendForm = () => {
     footerLetoSchelkovo = document.getElementById('footer_leto_schelkovo'),
     clubs = document.querySelector('.choose-club'),
     mozLabel = clubs.querySelector(`label[for="${footerLetoMozaika.id}"]`),
-    shelkLabel = clubs.querySelector(`label[for="${footerLetoSchelkovo.id}"]`);
-  const cardOrder = document.querySelector("#card_order"),
-    mozCardLabel = cardOrder.querySelector("input[id=card_leto_mozaika]"),
-    schelCardLabel = cardOrder.querySelector("input[id=card_leto_schelkovo]");
-  const formName = cardOrder.querySelector("input[name=form_name]");
+    shelkLabel = clubs.querySelector(`label[for="${footerLetoSchelkovo.id}"]`),
+    mozCardLabel = document.querySelector("input[id=card_leto_mozaika]"),
+    schelCardLabel = document.querySelector("input[id=card_leto_schelkovo]");
 
-  statusMessage.style.cssText = `font-size: 1.5rem; color: red;`;
+  statusMessage.style.cssText = `font-size: 1.5rem; color: white;`;
   const validatorInputs = () => {
     form.forEach(item => {
       item.querySelectorAll("input").forEach(elem => {
@@ -28,6 +26,8 @@ const sendForm = () => {
         elem.addEventListener("input", () => {
           if (attributeName === "phone") {
             elem.value = elem.value.replace(/[^\d+]/g, '');
+          } else if (attributeName === "promo") {
+            elem.value = elem.value.replace(/[^а-яА-ЯёЁ0-9]+$/ig, "").toUpperCase();
           } else if (attributeName === "name") {
             elem.value = elem.value.replace(/[^а-яА-ЯёЁ]+$/ig, "");
           }
@@ -38,7 +38,6 @@ const sendForm = () => {
   validatorInputs();
 
   const checkedClubs = (mozClub, schelClub) => {
-
     const mozData = {
       name: mozLabel.querySelector('h6').textContent,
       adres: mozLabel.querySelector('p').textContent
@@ -87,7 +86,10 @@ const sendForm = () => {
   };
 
   checkedClubs(footerLetoMozaika, footerLetoSchelkovo);
-  checkedClubs(mozCardLabel, schelCardLabel);
+  if (mozCardLabel && schelCardLabel) {
+    checkedClubs(mozCardLabel, schelCardLabel);
+  }
+
   form.forEach(item => {
     const checkBox = item.querySelector("input[type=checkbox]"),
       inputsForm = item.querySelectorAll('input'),
@@ -106,16 +108,11 @@ const sendForm = () => {
       item.append(statusMessage);
       statusMessage.textContent = loadMessage;
       const formData = new FormData(item);
-
       const body = {};
       formData.forEach((val, key) => {
         body[key] = val;
       });
-      const formName = body.form_name;
-      if (!body.form_name) {
-        body.form_name = formName;
-      }
-      console.log(body.form_name);
+
       if ((checkBox && !checkBox.checked) || ((inputText && inputText.value === '') || inputTel.value === '')) {
         p.textContent = checkMessage;
         h4.textContent = "Oops!";
@@ -146,9 +143,10 @@ const sendForm = () => {
           console.error(error);
         })
         .finally(() => {
-          item.querySelectorAll("input").forEach(elem => {
-            elem.value = "";
-            elem.checked = false;
+          item.querySelectorAll("input").forEach(() => {
+            inputText.value = "";
+            inputTel.value = "";
+            checkBox.checked = false;
           });
         });
     });

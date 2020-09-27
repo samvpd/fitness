@@ -13,6 +13,7 @@ import mainSlider from "./modules/mainSlider";
 import gallerySlider from "./modules/gallerySlider";
 import sendForm from "./modules/sendForm";
 import servicesSlider from './modules/servicesSlider';
+import calc from './modules/calc';
 
 dropMenu();
 textModal();
@@ -24,3 +25,4 @@ mainSlider();
 gallerySlider();
 sendForm();
 servicesSlider();
+calc();
