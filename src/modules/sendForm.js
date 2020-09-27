@@ -15,9 +15,10 @@ const sendForm = () => {
     clubs = document.querySelector('.choose-club'),
     mozLabel = clubs.querySelector(`label[for="${footerLetoMozaika.id}"]`),
     shelkLabel = clubs.querySelector(`label[for="${footerLetoSchelkovo.id}"]`);
-  const inputRadio = document.querySelectorAll("input[type=radio]");
-
-
+  const cardOrder = document.querySelector("#card_order"),
+    mozCardLabel = cardOrder.querySelector("input[id=card_leto_mozaika]"),
+    schelCardLabel = cardOrder.querySelector("input[id=card_leto_schelkovo]");
+  const formName = cardOrder.querySelector("input[name=form_name]");
 
   statusMessage.style.cssText = `font-size: 1.5rem; color: red;`;
   const validatorInputs = () => {
@@ -52,7 +53,7 @@ const sendForm = () => {
 
     mozClub.addEventListener('change', () => {
       mozClub.setAttribute('checked', '');
-      if (footerLetoMozaika && !footerLetoMozaika.checked) {
+      if (mozClub && !mozClub.checked) {
         p.textContent = checkMessage;
         h4.textContent = "Oops!";
         popUpMessage.style.display = "block";
@@ -64,16 +65,12 @@ const sendForm = () => {
       } else {
         mozClub.setAttribute('value', `${JSON.stringify(mozData)}`);
       }
-      // p.textContent = "Ваша заявка отправлена.Мы свяжемся с вами в ближайшее время.";
-      // h4.textContent = "Спасибо!";
-      // popUpMessage.style.display = "block";
-
       schelClub.removeAttribute('checked');
     });
 
     schelClub.addEventListener('change', () => {
       schelClub.setAttribute('checked', '');
-      if (footerLetoSchelkovo && !footerLetoSchelkovo.checked) {
+      if (schelClub && !schelClub.checked) {
         p.textContent = checkMessage;
         h4.textContent = "Oops!";
         popUpMessage.style.display = "block";
@@ -85,15 +82,12 @@ const sendForm = () => {
       } else {
         schelClub.setAttribute('value', `${JSON.stringify(schelData)}`);
       }
-      // p.textContent = "Ваша заявка отправлена.Мы свяжемся с вами в ближайшее время.";
-      // h4.textContent = "Спасибо!";
-      // popUpMessage.style.display = "block";
       mozClub.removeAttribute('checked');
     });
   };
 
   checkedClubs(footerLetoMozaika, footerLetoSchelkovo);
-
+  checkedClubs(mozCardLabel, schelCardLabel);
   form.forEach(item => {
     const checkBox = item.querySelector("input[type=checkbox]"),
       inputsForm = item.querySelectorAll('input'),
@@ -112,11 +106,16 @@ const sendForm = () => {
       item.append(statusMessage);
       statusMessage.textContent = loadMessage;
       const formData = new FormData(item);
+
       const body = {};
       formData.forEach((val, key) => {
         body[key] = val;
       });
-
+      const formName = body.form_name;
+      if (!body.form_name) {
+        body.form_name = formName;
+      }
+      console.log(body.form_name);
       if ((checkBox && !checkBox.checked) || ((inputText && inputText.value === '') || inputTel.value === '')) {
         p.textContent = checkMessage;
         h4.textContent = "Oops!";
