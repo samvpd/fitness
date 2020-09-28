@@ -166,7 +166,6 @@ const sendForm = () => {
           if (item.closest("form").id === "footer_form") {
             item.querySelector("#footer_leto_mozaika").checked = true;
           }
-
         });
     });
   });

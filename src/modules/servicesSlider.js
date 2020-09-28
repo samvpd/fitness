@@ -49,6 +49,7 @@ const servicesSlider = () => {
       const slidesToShowDefault = this.slidesToShow,
         allResponse = this.responsive.map(item => item.breakpoint),
         maxResponse = Math.max(...allResponse);
+      console.log(allResponse);
 
       const checkResponse = () => {
         const widthWindow = document.documentElement.clientWidth;
@@ -59,12 +60,12 @@ const servicesSlider = () => {
               this.slidesToShow = this.responsive[i].slideToShow;
               this.options.widthSlide = Math.floor(100 / this.slidesToShow);
               this.addStyle();
-            } else {
-              this.slidesToShow = slidesToShowDefault;
-              this.options.widthSlide = Math.floor(100 / this.slidesToShow);
-              this.addStyle();
             }
           }
+        } else {
+          this.slidesToShow = slidesToShowDefault;
+          this.options.widthSlide = Math.floor(100 / this.slidesToShow);
+          this.addStyle();
         }
       };
 
@@ -173,7 +174,6 @@ right: 0px;
     infinity: true,
     responsive: [{
         breakpoint: 1024,
-
         slideToShow: 3
       },
       {
