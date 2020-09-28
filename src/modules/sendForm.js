@@ -24,9 +24,7 @@ const sendForm = () => {
       item.querySelectorAll("input").forEach(elem => {
         const attributeName = elem.getAttribute("name");
         elem.addEventListener("input", () => {
-          if (attributeName === "phone") {
-            elem.value = elem.value.replace(/[^\d+]/g, '');
-          } else if (attributeName === "promo") {
+          if (attributeName === "promo") {
             elem.value = elem.value.replace(/[^а-яА-ЯёЁ0-9]+$/ig, "").toUpperCase();
           } else if (attributeName === "name") {
             elem.value = elem.value.replace(/[^а-яА-ЯёЁ]+$/ig, "");
@@ -144,10 +142,31 @@ const sendForm = () => {
         })
         .finally(() => {
           item.querySelectorAll("input").forEach(() => {
-            inputText.value = "";
-            inputTel.value = "";
-            checkBox.checked = false;
+            if (inputText && inputTel && checkBox) {
+              inputText.value = "";
+              inputTel.value = "";
+              checkBox.checked = false;
+            } else {
+              inputTel.value = "";
+            }
           });
+          if (item.closest("form").id === "form1" || item.closest("form").id === "form2") {
+            item.closest(".popup").style.display = "none";
+          }
+          if (item.closest("form").id === "card_order") {
+            if (item.querySelector("#m1")) {
+              item.querySelector("#m1").checked = true;
+              item.querySelector("#card_leto_mozaika").checked = true;
+              item.querySelector("#price-total").textContent = "1990";
+              item.querySelector("input[name=name]").value = "";
+            } else {
+              item.querySelector("#t1").checked = true;
+            }
+          }
+          if (item.closest("form").id === "footer_form") {
+            item.querySelector("#footer_leto_mozaika").checked = true;
+          }
+
         });
     });
   });

@@ -14,6 +14,7 @@ import gallerySlider from "./modules/gallerySlider";
 import sendForm from "./modules/sendForm";
 import servicesSlider from './modules/servicesSlider';
 import calc from './modules/calc';
+import numMask from "./modules/maskPhone";
 
 dropMenu();
 textModal();
@@ -26,3 +27,4 @@ gallerySlider();
 sendForm();
 servicesSlider();
 calc();
+numMask();
