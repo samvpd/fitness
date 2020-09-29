@@ -9,11 +9,7 @@ const dropMenu = () => {
     if (target.closest(".club-select") && ul.style.display === "none") {
       ul.style.display = "block";
       return;
-    } else {
-      ul.style.display = "none";
-      target = target.closest(".club-select");
-    }
-    if (!target) {
+    } else if (!target.closest(".club-select")) {
       ul.style.display = "none";
     }
   });

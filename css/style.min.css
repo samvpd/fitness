@@ -1016,7 +1016,7 @@ header .head .club-select .clubs-list ul {
   position: absolute;
   top: 60px;
   left: 0;
-  z-index: 100;
+  z-index: 1002;
   background-color: #381b35;
   padding: 15px;
   border: 1px solid #ffd11a;

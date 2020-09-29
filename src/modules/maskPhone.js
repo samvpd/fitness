@@ -1,5 +1,7 @@
 function numMask() {
-  const phoneInput = document.querySelectorAll('[name=phone]');
+  const phoneInput = document.querySelectorAll('[name=phone]'),
+    btnSubmit = document.querySelectorAll("[type=submit]"),
+    form = document.querySelectorAll("form");
 
   function setCursorPosition(pos, elem) {
     elem.focus();
@@ -21,6 +23,21 @@ function numMask() {
       val = this.value.replace(/\D/g, "");
     if (def.length >= val.length) {
       val = def;
+    }
+    if (val.length < 11) {
+      btnSubmit.forEach(elem => {
+        elem.setAttribute("disabled", true);
+      });
+      phoneInput.forEach(item => {
+        item.style.color = "red";
+      });
+    } else {
+      btnSubmit.forEach(elem => {
+        elem.removeAttribute("disabled");
+      });
+      phoneInput.forEach(item => {
+        item.style.color = "";
+      });
     }
     this.value = matrix.replace(/./g, a => (/[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a));
     if (event.type == "blur") {

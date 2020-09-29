@@ -49,7 +49,6 @@ const servicesSlider = () => {
       const slidesToShowDefault = this.slidesToShow,
         allResponse = this.responsive.map(item => item.breakpoint),
         maxResponse = Math.max(...allResponse);
-      console.log(allResponse);
 
       const checkResponse = () => {
         const widthWindow = document.documentElement.clientWidth;
